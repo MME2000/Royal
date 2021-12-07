@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Auth\V01\AuthController;
+use App\Http\Controllers\API\V01\Auth\AuthController;
+use App\Http\Controllers\API\V01\Channel\ChannelController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+    // Auth
+
 Route::prefix('v1/')->group(function(){
     Route::prefix('auth')->group(function(){
         Route::post('register',[AuthController::class,'register'])->name('auth.register');
@@ -28,3 +31,12 @@ Route::prefix('v1/')->group(function(){
         Route::post('logout',[AuthController::class,'logout'])->name('auth.logout');
     });
 });
+
+    // Channel
+
+    Route::prefix('channel/')->group(function(){
+        Route::get('index',[ChannelController::class,'index'])->name('channel.index');
+        Route::post('store',[ChannelController::class,'store'])->name('channel.store');
+        Route::put('update',[ChannelController::class,'update'])->name('channel.update');
+        Route::delete('delete',[ChannelController::class,'delete'])->name('channel.delete');
+    });

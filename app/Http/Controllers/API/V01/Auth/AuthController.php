@@ -1,19 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Auth\V01;
+namespace App\Http\Controllers\API\V01\Auth;
 
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\userCreate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-
-    // register new user
-
     public function register(Request $request)
     {
         // validate user form for auth
@@ -55,6 +50,5 @@ class AuthController extends Controller
     {
         Auth::logout();
     }
+
 }
-
-
