@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\API\V01\Auth\AuthController;
-use App\Http\Controllers\API\V01\Channel\ChannelController;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,19 +24,14 @@ use Illuminate\Support\Facades\Route;
 
     // Auth
 
-Route::prefix('v1/')->group(function(){
-    Route::prefix('auth')->group(function(){
-        Route::post('register',[AuthController::class,'register'])->name('auth.register');
-        Route::post('login',[AuthController::class,'login'])->name('auth.login');
-        Route::post('logout',[AuthController::class,'logout'])->name('auth.logout');
-    });
-});
+         include_once __DIR__ . '/v1/auth_route.php';
 
     // Channel
 
-    Route::prefix('channel/')->group(function(){
-        Route::get('index',[ChannelController::class,'index'])->name('channel.index');
-        Route::post('store',[ChannelController::class,'store'])->name('channel.store');
-        Route::put('update',[ChannelController::class,'update'])->name('channel.update');
-        Route::delete('delete',[ChannelController::class,'delete'])->name('channel.delete');
-    });
+         include_once __DIR__ . '/v1/channel.php';
+
+
+         Route::get('test',function(Request $request){
+             return 'hi';
+         });
+
